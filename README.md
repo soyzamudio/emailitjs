@@ -69,12 +69,12 @@ angular.module('MyApp', ['emailit'])
 
 ### Paramenters
 
-| Key | Type | Description | Example | Required |
-| ------------- | ------------- | ----------- | ----------- | :-----------: |
-| API_KEY | *String* | The API Key received from your | 'sdofias0dfi0asdas0e2sdfask' | YES |
-| TO_EMAIL | *String* | Email of the person receiving the email | 'receiver@mail.com' | YES |
-| FROM_EMAIL | *String* | Email of the person sending the email | 'sender@mail.com' | YES |
-| MESSAGE_TO_SEND | *String* | Message to be sent | 'This is a test message sent using eMailit.js' | YES |
+| Key | Type | Description | Required |
+| ------------- | ------------- | ----------- | :-----------: |
+| API_KEY | *String* | The API Key received from your | YES |
+| TO_EMAIL | *String* | Email of the person receiving the email | YES |
+| FROM_EMAIL | *String* | Email of the person sending the email | YES |
+| MESSAGE_TO_SEND | *String* | Message to be sent | YES |
 
 # Author
 
