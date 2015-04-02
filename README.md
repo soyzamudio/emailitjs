@@ -60,7 +60,7 @@ And to use it simple select your provider and pass it in the variables required:
 ```javascript
 angular.module('MyApp', ['emailit'])
 .controller('MyController', ['$scope', 'email', function($scope, email) {
-  // Using MailGun
+  // Replace mailgun with your provider: mailgun, mailchimp, sendgrid, mailjet
   email.mailgun(API KEY, TO_EMAIL, FROM_EMAIL, MESSAGE_TO_SEND)
   .then(function(success) {
     console.log('Successfully sent', success);
