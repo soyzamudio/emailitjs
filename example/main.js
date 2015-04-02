@@ -1,25 +1,32 @@
 angular.module('MyApp', ['emailit'])
 .controller('MyController', ['$scope', 'email', function($scope, email) {
 
-  var message = 'This is a test message';
-  var to = 'to@jose.com';
-  var from = 'from@jose.com';
-  var key = 'testing keys';
+  var mailchimpKey = 'DV6iDBf0ZF_bcscqfJalXw';
+  var user = 'soyzamudio';
+  var key = 'tuturutu1';
+
+  $scope.mail = {};
 
   $scope.mailgun = function() {
-    email.mailgun(key, to, from, message);
+    email.mailgun(key, $scope.mail.to, $scope.mail.from, $scope.mail.message, $scope.mail.subject);
   };
 
-  $scope.mailchimp = function() {
-    email.mailchimp(key, to, from, message);
+  $scope.mandrill = function() {
+    email.mandrill(mailchimpKey, $scope.mail.to, $scope.mail.from, $scope.mail.message, $scope.mail.subject)
+    .then(function(response) {
+      console.log(response);
+    });
   };
 
   $scope.sendgrid = function() {
-    email.sendgrid(key, to, from, message);
+    email.sendgrid(user, key, $scope.mail.to, $scope.mail.from, $scope.mail.message, $scope.mail.subject)
+    .then(function(response) {
+      console.log(response);
+    });
   };
 
   $scope.mailjet = function() {
-    email.mailjet(key, to, from, message);
+    email.mailjet(key, $scope.mail.to, $scope.mail.from, $scope.mail.message);
   };
 
 }]);

@@ -1,19 +1,33 @@
 angular.module('emailit', [])
-.factory('email', [function() {
-
-  function mailchimp(key, to, from, message) {
-    console.log('In Mailchimp');
-    console.log(key, to, from, message);
-  }
+.factory('email', ['$http', function($http) {
 
   function mailgun(key, to, from, message) {
     console.log('In Mailgun');
     console.log(key, to, from, message);
   }
 
-  function sendgrid(key, to, from, message) {
-    console.log('In SendGrid');
-    console.log(key, to, from, message);
+  function mandrill(key, to, from, message, subject) {
+    var data = {
+      'key':     key,
+      'message': {
+        'from_email': from,
+        'to':         [
+          {
+            'email': to,
+            'to':    'to'
+          }
+        ],
+        'autotext': 'true',
+        'subject':  subject,
+        'html':     message
+      }
+    }
+    console.log(data);
+    return $http.post('https://mandrillapp.com/api/1.0/messages/send.json', data)
+  }
+
+  function sendgrid(user, key, to, from, message, subject) {
+    return $http.jsonp('https://api.sendgrid.com/api.mail.send.json?api_user='  + user + '&api_key=' + key + '&to=' + to + '&subject=' + subject + '&text=' + message + '&from=' + from);
   }
 
   function mailjet(key, to, from, message) {
@@ -21,5 +35,5 @@ angular.module('emailit', [])
     console.log(key, to, from, message);
   }
 
-  return {mailgun:mailgun, mailchimp:mailchimp, sendgrid:sendgrid, mailjet:mailjet};
+  return {mailgun:mailgun, mandrill:mandrill, sendgrid:sendgrid, mailjet:mailjet};
 }]);
