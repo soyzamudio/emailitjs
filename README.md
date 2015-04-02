@@ -3,7 +3,7 @@ NOTICE!!
 THIS PROJECT IS NOT FINISHED, THIS IS JUST THE README FILE FOR FUTURE REFERENCE
 ```
 
-# eMailit.js
+# eMailit.js [![Build Status](https://travis-ci.org/soyzamudio/open-market.svg?branch=master)](https://travis-ci.org/soyzamudio/open-market)
 
 With `eMailit.js` you don't have to worry about going through the hassle of setting up a mailing provider and the terrible process of understanding their API docs.
 
@@ -60,13 +60,9 @@ And to use it simple select your provider and pass it in the variables required:
 ```javascript
 angular.module('MyApp', ['emailit'])
 .controller('MyController', ['$scope', 'email', function($scope, email) {
-  // Replace mailgun with your provider: mailgun, mailchimp, sendgrid, mailjet
-  email.mailgun(API KEY, TO_EMAIL, FROM_EMAIL, MESSAGE_TO_SEND)
-  .then(function(success) {
-    console.log('Successfully sent', success);
-  })
-  .then(function(error) {
-    console.log('Error', error)
+  // REPLACE mailgun WITH ANY PROVIDER: mailgun, mailchimp, sendgrid, mailjet
+  email.mailgun(API KEY, TO_EMAIL, FROM_EMAIL, MESSAGE_TO_SEND, function(err, response) {
+    // DO WHATEVER AFTER THE EMAIL IS SENT...
   });
 }]);
 ```
