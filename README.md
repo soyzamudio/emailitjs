@@ -61,11 +61,20 @@ And to use it simple select your provider and pass it in the variables required:
 angular.module('MyApp', ['emailit'])
 .controller('MyController', ['$scope', 'email', function($scope, email) {
   // REPLACE mailgun WITH ANY PROVIDER: mailgun, mailchimp, sendgrid, mailjet
-  email.mailgun(API KEY, TO_EMAIL, FROM_EMAIL, MESSAGE_TO_SEND, function(err, response) {
+  email.mailgun(API_KEY, TO_EMAIL, FROM_EMAIL, MESSAGE_TO_SEND, function(err, response) {
     // DO WHATEVER AFTER THE EMAIL IS SENT...
   });
 }]);
 ```
+
+### Paramenters
+
+| Key | Type | Description | Example | Required |
+| ------------- | ------------- | ----------- | ----------- | :-----------: |
+| API_KEY | *String* | The API Key received from your | 'sdofias0dfi0asdas0e2sdfask' | YES |
+| TO_EMAIL | *String* | Email of the person receiving the email | 'receiver@mail.com' | YES |
+| FROM_EMAIL | *String* | Email of the person sending the email | 'sender@mail.com' | YES |
+| MESSAGE_TO_SEND | *String* | Message to be sent | 'This is a test message sent using eMailit.js' | YES |
 
 # Author
 
