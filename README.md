@@ -13,7 +13,7 @@ With a single line of code you will be able to select the mailing provider you n
 
 We are working hard to add as many providers as we can, this is the list of providers with which you can use `eMailit.js`:
 
-* [MailChimp](http://malchimp.com)
+* [Mandrill](http://mandrill.com)
 * [MailGun](http://mailgun.com)
 * [SendGrid](http://sendgrid.com)
 * [MailJet](http://mailjet.com)
@@ -60,9 +60,11 @@ And to use it simple select your provider and pass it in the variables required:
 ```javascript
 angular.module('MyApp', ['emailit'])
 .controller('MyController', ['$scope', 'email', function($scope, email) {
-  // REPLACE mailgun WITH ANY PROVIDER: mailgun, mailchimp, sendgrid, mailjet
-  email.mailgun(API_KEY, TO_EMAIL, FROM_EMAIL, MESSAGE_TO_SEND, function(err, response) {
+  // REPLACE madrill WITH ANY PROVIDER: mailgun, mandrill, sendgrid, mailjet
+  email.madrill(API_KEY, TO_EMAIL, FROM_EMAIL, MESSAGE_TO_SEND, MESSAGE_SUBJECT)
+  .then(function(response) {
     // DO WHATEVER AFTER THE EMAIL IS SENT...
+    console.log(response);
   });
 }]);
 ```
@@ -75,6 +77,7 @@ angular.module('MyApp', ['emailit'])
 | TO_EMAIL | *String* | Email of the person receiving the email | YES |
 | FROM_EMAIL | *String* | Email of the person sending the email | YES |
 | MESSAGE_TO_SEND | *String* | Message to be sent | YES |
+| MESSAGE_SUBJECT | *String* | Subject of the email to be sent | NO |
 
 # Author
 
